@@ -41,20 +41,39 @@ export default function LoginForm({setUser}){
     function gestisciCambioPassword(e){
         setPassword(e.target.value);
     }
+
+    function gestisciMessaggioErrore(){
+        let str = "";
+        if (token == null) {
+            
+        } else if(token == ""){
+            str = "username o password errati";
+        } else{
+            str = "accesso conseguito con successo";
+        }
+
+        return str;
+    }
     
     return(
         <div>
             <h1>Login</h1>
-            <div>Username: <input type="text"  onChange={gestisciCambioUsername} required/></div>
-            <div>Password: <input type="password"  onChange={gestisciCambioPassword} required/></div>
+            {
+                elaborando
+                ?
+                <div>
+                    <div>Username: <input type="text" disabled/></div>
+                    <div>Password: <input type="password" disabled/></div>
+                </div>
+                :
+                <div>
+                    <div>Username: <input type="text"  onChange={gestisciCambioUsername} required/></div>
+                    <div>Password: <input type="password"  onChange={gestisciCambioPassword} required/></div>
+                </div>
+            }
             <div><button onClick={login}>Accedi</button></div>
             {
-                token != "" &&
-                <p>Accesso conseguito con successo</p>
-            }
-            {
-                token == "" &&
-                <p>Username o password sono errati</p>
+                <p>{gestisciMessaggioErrore()}</p>
             }
         </div>
 
