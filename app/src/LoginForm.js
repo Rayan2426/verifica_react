@@ -20,8 +20,11 @@ export default function LoginForm({setUser}){
         setToken(esito["token"]);
         console.log(esito["token"]);
         if(esito["token"] == null || esito["token"] == ""){
+            setPassword("");
             setUser(null);
         } else{
+            setUsername("");
+            setPassword("");
             const richiestadati = await fetch(`http://localhost:8080/user/` + esito["token"], 
                 {  
                 method: "GET"
@@ -64,11 +67,12 @@ export default function LoginForm({setUser}){
                 <div>
                     <div>Username: <input type="text" disabled/></div>
                     <div>Password: <input type="password" disabled/></div>
+                    <p>Caricamento in corso...</p>
                 </div>
                 :
                 <div>
-                    <div>Username: <input type="text"  onChange={gestisciCambioUsername} required/></div>
-                    <div>Password: <input type="password"  onChange={gestisciCambioPassword} required/></div>
+                    <div>Username: <input type="text"  onChange={gestisciCambioUsername} value={username} required/></div>
+                    <div>Password: <input type="password"  onChange={gestisciCambioPassword} value={password} required/></div>
                 </div>
             }
             <div><button onClick={login}>Accedi</button></div>

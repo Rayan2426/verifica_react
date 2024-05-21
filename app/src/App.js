@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => {setMostraSignUpForm(true); setMostraLoginForm(false)}}>Sign Up</button>
+      <button onClick={() => {setMostraSignUpForm(true); setMostraLoginForm(false); setUser(null)}}>Sign Up</button>
       {
         mostraSignUpForm
         ?

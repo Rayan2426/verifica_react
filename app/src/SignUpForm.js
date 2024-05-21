@@ -18,6 +18,9 @@ export default function SignUp(){
         )
         const esito = await risposta.json();
         setEsito(esito["status"]);
+        setEmail("");
+        setUsername("");
+        setPassword("");
         setElaborando(false);
     }
 
@@ -41,12 +44,13 @@ export default function SignUp(){
                     <div>Email: <input type="email" disabled /></div>
                     <div>Username: <input type="text" disabled/></div>
                     <div>Password: <input type="password" disabled/></div>
+                    <p>Caricamento in corso...</p>
                 </div>
                 :
                 <div>
-                    <div>Email: <input type="email" onChange={gestisciCambioEmail} required /></div>
-                    <div>Username: <input type="text"  onChange={gestisciCambioUsername} required/></div>
-                    <div>Password: <input type="password"  onChange={gestisciCambioPassword} required/></div>
+                    <div>Email: <input type="email" onChange={gestisciCambioEmail} value={email} required /></div>
+                    <div>Username: <input type="text"  onChange={gestisciCambioUsername} value={username} required/></div>
+                    <div>Password: <input type="password"  onChange={gestisciCambioPassword} value={password} required/></div>
                 </div>
             }
             <div><button onClick={registra}>Registrati</button></div>
