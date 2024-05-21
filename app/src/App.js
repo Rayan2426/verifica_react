@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from './Login'
+import SignUp from './SignUp'
+import {useState, useEffect} from 'react'
 
 function App() {
+  const [mostraSignUpForm, setMostraSignUpForm] = useState(false);
+  const [mostraLoginForm, setMostraLoginForm] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => {setMostraSignUpForm(true); setMostraLoginForm(false)}}>Sign Up</button>
+      {
+        mostraSignUpForm
+        ?
+        <SignUp/>
+        :
+        ""
+      }
+      <hr/>
+      <button onClick={() => {setMostraLoginForm(true); setMostraSignUpForm(false)}}>Login</button>
+      {
+        mostraLoginForm
+        ?
+        <Login/>
+        :
+        ""
+      }
     </div>
   );
 }
