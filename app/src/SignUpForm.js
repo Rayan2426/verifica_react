@@ -33,6 +33,7 @@ export default function SignUp(){
     
     return(
         <div>
+            <h1>Sign Up</h1>
             <div>Email: <input type="email" onChange={gestisciCambioEmail} required /></div>
             <div>Username: <input type="text"  onChange={gestisciCambioUsername} required/></div>
             <div>Password: <input type="password"  onChange={gestisciCambioPassword} required/></div>

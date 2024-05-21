@@ -1,18 +1,21 @@
 import './App.css';
-import Login from './Login'
-import SignUp from './SignUp'
+import LoginForm from './LoginForm'
+import SignUpForm from './SignUpForm'
+import User from './User'
 import {useState, useEffect} from 'react'
 
 function App() {
   const [mostraSignUpForm, setMostraSignUpForm] = useState(false);
   const [mostraLoginForm, setMostraLoginForm] = useState(false);
+  const [user, setUser] = useState(null);
+
   return (
     <div className="App">
       <button onClick={() => {setMostraSignUpForm(true); setMostraLoginForm(false)}}>Sign Up</button>
       {
         mostraSignUpForm
         ?
-        <SignUp/>
+        <SignUpForm/>
         :
         ""
       }
@@ -21,9 +24,16 @@ function App() {
       {
         mostraLoginForm
         ?
-        <Login/>
+        <LoginForm setUser={setUser}/>
         :
         ""
+      }
+      <hr/>
+      {
+        user != null &&
+        <div>
+          <User id={user.id} username={user.username} token={user.token} email={user.email} reg_date={user.reg_date}/>
+        </div>
       }
     </div>
   );
